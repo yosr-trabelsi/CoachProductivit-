@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="0.0"
+      style="-fx-background-color: #f0f4f8; -fx-padding: 30 30 30 30;"
+      xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.productivitycoach.CalendrierController">
+
+    <Label text="📅  Calendrier"
+           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1a202c; -fx-padding: 0 0 6 0;" />
+    <HBox prefHeight="2.0"
+          style="-fx-background-color: linear-gradient(to right, #0369a1, #f0f4f8); -fx-padding: 0 0 18 0;" />
+
+    <VBox spacing="14.0"
+          style="-fx-background-color: #ffffff; -fx-background-radius: 14;
+                 -fx-padding: 22 24 22 24; -fx-border-color: #e2e8f0;
+                 -fx-border-width: 1; -fx-border-radius: 14;
+                 -fx-effect: dropshadow(gaussian, #1a202c15, 8, 0, 0, 3);">
+
+        <Label text="Sélectionnez une date :"
+               style="-fx-font-weight: bold; -fx-text-fill: #64748b; -fx-font-size: 13px;" />
+        <DatePicker fx:id="calendrierPicker" />
+    </VBox>
+
+    <Label text="  Tâches pour cette date :"
+           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1a202c; -fx-padding: 18 0 8 0;" />
+
+    <ListView fx:id="tachesListView" prefHeight="360.0"
+              style="-fx-background-color: #ffffff; -fx-background-radius: 10;
+                     -fx-border-color: #e2e8f0; -fx-border-radius: 10;" />
+
+</VBox>

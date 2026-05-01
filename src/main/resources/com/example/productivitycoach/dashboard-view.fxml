@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+  LIGHT FUTURISTIC PALETTE
+  Main bg       : #f0f4f8   cool off-white
+  Sidebar bg    : #ffffff   pure white
+  Sidebar border: #e2e8f0   soft separator
+  Primary text  : #1a202c   near-black
+  Secondary txt : #64748b   slate
+  Accent teal   : #0694a2   deeper readable teal
+  Accent purple : #6d28d9   vibrant purple
+  Accent blue   : #0369a1   rich blue
+  Accent amber  : #d97706   warm amber
+  Card bg       : #ffffff
+  Card border   : accent colour per card
+  Active nav    : teal tint  #e6f7f8 with teal left border
+  Danger        : #dc2626
+-->
+
+<BorderPane prefHeight="650.0" prefWidth="960.0"
+            style="-fx-background-color: #f0f4f8;"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.productivitycoach.DashboardController">
+
+    <!-- ══════════════════════ SIDEBAR ══════════════════════ -->
+    <left>
+        <VBox prefWidth="215.0" prefHeight="650.0" spacing="4.0"
+              style="-fx-background-color: #ffffff;
+                     -fx-border-color: #e2e8f0;
+                     -fx-border-width: 0 1 0 0;
+                     -fx-padding: 28 12 20 12;"
+              BorderPane.alignment="CENTER">
+            <children>
+
+                <!-- Logo -->
+                <VBox spacing="0.0" style="-fx-padding: 0 0 8 6;">
+                    <Label text="⚡ Productivity"
+                           style="-fx-text-fill: #1a202c; -fx-font-size: 15px; -fx-font-weight: bold;" />
+                    <Label text="   Coach"
+                           style="-fx-text-fill: #0694a2; -fx-font-size: 15px; -fx-font-weight: bold;" />
+                </VBox>
+
+                <!-- Teal accent line -->
+                <HBox prefHeight="2.0" prefWidth="191.0"
+                      style="-fx-background-color: linear-gradient(to right, #0694a2, #e2e8f0);
+                             -fx-padding: 0 0 8 0;" />
+
+                <!-- Active: Dashboard -->
+                <Button mnemonicParsing="false" text="  🏠   Dashboard"
+                        onAction="#onShowProfil"
+                        prefWidth="191.0" prefHeight="40.0"
+                        style="-fx-background-color: #e6f7f8;
+                               -fx-text-fill: #0694a2;
+                               -fx-font-size: 13px; -fx-font-weight: bold;
+                               -fx-background-radius: 10; -fx-cursor: hand;
+                               -fx-alignment: CENTER-LEFT;
+                               -fx-border-color: #0694a2;
+                               -fx-border-radius: 10; -fx-border-width: 0 0 0 3;" />
+
+                <Button mnemonicParsing="false" text="  📋   Mes Tâches"
+                        onAction="#onShowTasks"
+                        prefWidth="191.0" prefHeight="40.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #64748b;
+                               -fx-font-size: 13px; -fx-background-radius: 10;
+                               -fx-cursor: hand; -fx-alignment: CENTER-LEFT;" />
+
+                <Button mnemonicParsing="false" text="  📅   Calendrier"
+                        onAction="#onShowCalendrier"
+                        prefWidth="191.0" prefHeight="40.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #64748b;
+                               -fx-font-size: 13px; -fx-background-radius: 10;
+                               -fx-cursor: hand; -fx-alignment: CENTER-LEFT;" />
+
+                <Button mnemonicParsing="false" text="  📊   Statistiques"
+                        onAction="#onShowStatistiques"
+                        prefWidth="191.0" prefHeight="40.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #64748b;
+                               -fx-font-size: 13px; -fx-background-radius: 10;
+                               -fx-cursor: hand; -fx-alignment: CENTER-LEFT;" />
+
+                <Button mnemonicParsing="false" text="  📌   Sous-Tâches"
+                        onAction="#onShowSousTaches"
+                        prefWidth="191.0" prefHeight="40.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #64748b;
+                               -fx-font-size: 13px; -fx-background-radius: 10;
+                               -fx-cursor: hand; -fx-alignment: CENTER-LEFT;" />
+
+                <Button mnemonicParsing="false" text="  ✨   Planora IA"
+                        onAction="#onShowIA"
+                        prefWidth="191.0" prefHeight="40.0"
+                        style="-fx-background-color: #f5f0ff;
+                               -fx-text-fill: #6d28d9;
+                               -fx-font-size: 13px; -fx-font-weight: bold;
+                               -fx-background-radius: 10; -fx-cursor: hand;
+                               -fx-alignment: CENTER-LEFT;
+                               -fx-border-color: #6d28d9;
+                               -fx-border-radius: 10; -fx-border-width: 0 0 0 3;" />
+
+                <HBox prefHeight="1.0" prefWidth="191.0"
+                      style="-fx-background-color: #e2e8f0;" />
+
+                <Button mnemonicParsing="false" text="  👤   Mon Profil"
+                        onAction="#onShowProfil"
+                        prefWidth="191.0" prefHeight="40.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #64748b;
+                               -fx-font-size: 13px; -fx-background-radius: 10;
+                               -fx-cursor: hand; -fx-alignment: CENTER-LEFT;" />
+
+                <Region VBox.vgrow="ALWAYS" />
+
+                <HBox prefHeight="1.0" prefWidth="191.0"
+                      style="-fx-background-color: #e2e8f0;" />
+
+                <Button mnemonicParsing="false" text="  🚪   Déconnexion"
+                        onAction="#onLogout"
+                        prefWidth="191.0" prefHeight="40.0"
+                        style="-fx-background-color: #fef2f2;
+                               -fx-text-fill: #dc2626;
+                               -fx-font-size: 13px; -fx-font-weight: bold;
+                               -fx-background-radius: 10; -fx-cursor: hand;
+                               -fx-alignment: CENTER-LEFT;
+                               -fx-border-color: #dc2626;
+                               -fx-border-radius: 10; -fx-border-width: 0 0 0 3;" />
+
+            </children>
+        </VBox>
+    </left>
+
+    <!-- ══════════════════════ MAIN CONTENT ══════════════════════ -->
+    <center>
+        <StackPane fx:id="contentArea" BorderPane.alignment="CENTER">
+            <children>
+
+                <VBox fx:id="homeView" spacing="22.0"
+                      style="-fx-padding: 36 36 36 36; -fx-background-color: #f0f4f8;">
+
+                    <!-- HEADER -->
+                    <VBox spacing="4.0">
+                        <Label fx:id="lblBienvenue" text="👋  Bonjour !"
+                               style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1a202c;" />
+                        <Label text="Prêt(e) à conquérir votre journée ? Voici votre espace de productivité."
+                               style="-fx-font-size: 13px; -fx-text-fill: #64748b;" />
+                    </VBox>
+
+                    <HBox prefHeight="2.0"
+                          style="-fx-background-color: linear-gradient(to right, #0694a2, #6d28d9, #f0f4f8);" />
+
+                    <!-- QUICK ACCESS CARDS -->
+                    <HBox spacing="14.0">
+
+                        <!-- Tâches -->
+                        <VBox spacing="10.0" prefWidth="130.0"
+                              style="-fx-background-color: #ffffff; -fx-background-radius: 14;
+                                     -fx-padding: 18 16 18 16;
+                                     -fx-border-color: #0694a2; -fx-border-width: 0 0 0 3;
+                                     -fx-border-radius: 14;
+                                     -fx-effect: dropshadow(gaussian, #0694a220, 10, 0, 0, 3);">
+                            <Label text="📋" style="-fx-font-size: 24px;" />
+                            <Label text="Mes Tâches"
+                                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1a202c;" />
+                            <Label text="Gérer vos tâches"
+                                   style="-fx-font-size: 10px; -fx-text-fill: #64748b;" />
+                            <Button text="Accéder →" onAction="#onShowTasks" prefWidth="100.0"
+                                    style="-fx-background-color: #0694a2; -fx-text-fill: white;
+                                           -fx-background-radius: 8; -fx-cursor: hand;
+                                           -fx-font-size: 11px; -fx-font-weight: bold;" />
+                        </VBox>
+
+                        <!-- Calendrier -->
+                        <VBox spacing="10.0" prefWidth="130.0"
+                              style="-fx-background-color: #ffffff; -fx-background-radius: 14;
+                                     -fx-padding: 18 16 18 16;
+                                     -fx-border-color: #0369a1; -fx-border-width: 0 0 0 3;
+                                     -fx-border-radius: 14;
+                                     -fx-effect: dropshadow(gaussian, #0369a120, 10, 0, 0, 3);">
+                            <Label text="📅" style="-fx-font-size: 24px;" />
+                            <Label text="Calendrier"
+                                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1a202c;" />
+                            <Label text="Voir le planning"
+                                   style="-fx-font-size: 10px; -fx-text-fill: #64748b;" />
+                            <Button text="Accéder →" onAction="#onShowCalendrier" prefWidth="100.0"
+                                    style="-fx-background-color: #0369a1; -fx-text-fill: white;
+                                           -fx-background-radius: 8; -fx-cursor: hand;
+                                           -fx-font-size: 11px; -fx-font-weight: bold;" />
+                        </VBox>
+
+                        <!-- Statistiques -->
+                        <VBox spacing="10.0" prefWidth="130.0"
+                              style="-fx-background-color: #ffffff; -fx-background-radius: 14;
+                                     -fx-padding: 18 16 18 16;
+                                     -fx-border-color: #d97706; -fx-border-width: 0 0 0 3;
+                                     -fx-border-radius: 14;
+                                     -fx-effect: dropshadow(gaussian, #d9770620, 10, 0, 0, 3);">
+                            <Label text="📊" style="-fx-font-size: 24px;" />
+                            <Label text="Statistiques"
+                                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1a202c;" />
+                            <Label text="Suivre vos progrès"
+                                   style="-fx-font-size: 10px; -fx-text-fill: #64748b;" />
+                            <Button text="Accéder →" onAction="#onShowStatistiques" prefWidth="100.0"
+                                    style="-fx-background-color: #d97706; -fx-text-fill: white;
+                                           -fx-background-radius: 8; -fx-cursor: hand;
+                                           -fx-font-size: 11px; -fx-font-weight: bold;" />
+                        </VBox>
+
+                        <!-- Sous-Tâches -->
+                        <VBox spacing="10.0" prefWidth="130.0"
+                              style="-fx-background-color: #ffffff; -fx-background-radius: 14;
+                                     -fx-padding: 18 16 18 16;
+                                     -fx-border-color: #059669; -fx-border-width: 0 0 0 3;
+                                     -fx-border-radius: 14;
+                                     -fx-effect: dropshadow(gaussian, #05966920, 10, 0, 0, 3);">
+                            <Label text="📌" style="-fx-font-size: 24px;" />
+                            <Label text="Sous-Tâches"
+                                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1a202c;" />
+                            <Label text="Voir par tâche"
+                                   style="-fx-font-size: 10px; -fx-text-fill: #64748b;" />
+                            <Button text="Accéder →" onAction="#onShowSousTaches" prefWidth="100.0"
+                                    style="-fx-background-color: #059669; -fx-text-fill: white;
+                                           -fx-background-radius: 8; -fx-cursor: hand;
+                                           -fx-font-size: 11px; -fx-font-weight: bold;" />
+                        </VBox>
+
+                        <!-- Planora IA -->
+                        <VBox spacing="10.0" prefWidth="130.0"
+                              style="-fx-background-color: #faf5ff; -fx-background-radius: 14;
+                                     -fx-padding: 18 16 18 16;
+                                     -fx-border-color: #6d28d9; -fx-border-width: 0 0 0 3;
+                                     -fx-border-radius: 14;
+                                     -fx-effect: dropshadow(gaussian, #6d28d920, 12, 0, 0, 3);">
+                            <Label text="✨" style="-fx-font-size: 24px;" />
+                            <Label text="Planora IA"
+                                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1a202c;" />
+                            <Label text="Planifier avec l'IA"
+                                   style="-fx-font-size: 10px; -fx-text-fill: #64748b;" />
+                            <Button text="Accéder →" onAction="#onShowIA" prefWidth="100.0"
+                                    style="-fx-background-color: #6d28d9; -fx-text-fill: white;
+                                           -fx-background-radius: 8; -fx-cursor: hand;
+                                           -fx-font-size: 11px; -fx-font-weight: bold;" />
+                        </VBox>
+
+                    </HBox>
+
+                    <!-- PROFILE SECTION -->
+                    <Label text="◈  Mon Profil de Productivité"
+                           style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #0694a2;" />
+
+                    <VBox spacing="16.0"
+                          style="-fx-background-color: #ffffff;
+                                 -fx-background-radius: 14;
+                                 -fx-padding: 24 26 24 26;
+                                 -fx-border-color: #e2e8f0;
+                                 -fx-border-width: 1;
+                                 -fx-border-radius: 14;
+                                 -fx-effect: dropshadow(gaussian, #1a202c18, 8, 0, 0, 3);">
+
+                        <GridPane hgap="20.0" vgap="14.0">
+                            <columnConstraints>
+                                <ColumnConstraints prefWidth="115.0" />
+                                <ColumnConstraints prefWidth="400.0" />
+                            </columnConstraints>
+
+                            <Label text="🎯  Objectifs"
+                                   style="-fx-font-weight: bold; -fx-text-fill: #64748b; -fx-font-size: 12px;"
+                                   GridPane.rowIndex="0" />
+                            <TextArea fx:id="objectifsArea" prefHeight="58.0"
+                                      promptText="Ex: Obtenir mon diplôme..."
+                                      style="-fx-background-color: #f8fafc;
+                                             -fx-text-fill: #1a202c;
+                                             -fx-background-radius: 8;
+                                             -fx-border-color: #e2e8f0;
+                                             -fx-border-radius: 8; -fx-font-size: 12px;"
+                                      GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                            <Label text="⏱  Rythme"
+                                   style="-fx-font-weight: bold; -fx-text-fill: #64748b; -fx-font-size: 12px;"
+                                   GridPane.rowIndex="1" />
+                            <ChoiceBox fx:id="rythmeChoice" prefWidth="200.0"
+                                       GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                            <Label text="⚙️  Préférences"
+                                   style="-fx-font-weight: bold; -fx-text-fill: #64748b; -fx-font-size: 12px;"
+                                   GridPane.rowIndex="2" />
+                            <TextArea fx:id="prefsArea" prefHeight="58.0"
+                                      promptText="Ex: Travailler le matin..."
+                                      style="-fx-background-color: #f8fafc;
+                                             -fx-text-fill: #1a202c;
+                                             -fx-background-radius: 8;
+                                             -fx-border-color: #e2e8f0;
+                                             -fx-border-radius: 8; -fx-font-size: 12px;"
+                                      GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        </GridPane>
+
+                        <Button mnemonicParsing="false" onAction="#onUpdateProfileClick"
+                                text="💾  Sauvegarder le profil"
+                                prefHeight="38.0" prefWidth="210.0"
+                                style="-fx-background-color: #0694a2; -fx-text-fill: white;
+                                       -fx-font-weight: bold; -fx-font-size: 13px;
+                                       -fx-background-radius: 10; -fx-cursor: hand;" />
+                    </VBox>
+
+                </VBox>
+            </children>
+        </StackPane>
+    </center>
+
+</BorderPane>

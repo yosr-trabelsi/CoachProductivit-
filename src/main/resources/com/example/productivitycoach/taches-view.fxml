@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="0.0"
+      style="-fx-background-color: #f0f4f8; -fx-padding: 30 30 30 30;"
+      xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.productivitycoach.TachesController">
+
+    <!-- Header -->
+    <Label text="📋  Gestion de mes Tâches"
+           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1a202c; -fx-padding: 0 0 6 0;" />
+    <HBox prefHeight="2.0"
+          style="-fx-background-color: linear-gradient(to right, #0694a2, #f0f4f8); -fx-padding: 0 0 18 0;" />
+
+    <!-- Form card -->
+    <VBox spacing="14.0"
+          style="-fx-background-color: #ffffff; -fx-background-radius: 14;
+                 -fx-padding: 22 24 22 24; -fx-border-color: #e2e8f0;
+                 -fx-border-width: 1; -fx-border-radius: 14;
+                 -fx-effect: dropshadow(gaussian, #1a202c15, 8, 0, 0, 3);
+                 -fx-margin: 10 0 0 0;">
+
+        <GridPane hgap="15.0" vgap="12.0">
+            <columnConstraints>
+                <ColumnConstraints prefWidth="120.0" />
+                <ColumnConstraints prefWidth="190.0" />
+                <ColumnConstraints prefWidth="120.0" />
+                <ColumnConstraints prefWidth="190.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints prefHeight="36.0" />
+                <RowConstraints prefHeight="36.0" />
+                <RowConstraints prefHeight="36.0" />
+            </rowConstraints>
+
+            <Label text="Titre" style="-fx-font-weight: bold; -fx-text-fill: #64748b;" GridPane.rowIndex="0" />
+            <TextField fx:id="taskTitleField" promptText="Ex: Préparer examen..."
+                       style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0;
+                              -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-size: 12px;"
+                       GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Label text="Date d'échéance" style="-fx-font-weight: bold; -fx-text-fill: #64748b;"
+                   GridPane.columnIndex="2" GridPane.rowIndex="0" />
+            <DatePicker fx:id="taskDatePicker" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+
+            <Label text="Priorité" style="-fx-font-weight: bold; -fx-text-fill: #64748b;" GridPane.rowIndex="1" />
+            <ChoiceBox fx:id="priorityChoice" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Catégorie" style="-fx-font-weight: bold; -fx-text-fill: #64748b;"
+                   GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <ChoiceBox fx:id="categoryChoice" prefWidth="190.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+
+            <Label text="État" style="-fx-font-weight: bold; -fx-text-fill: #64748b;" GridPane.rowIndex="2" />
+            <ChoiceBox fx:id="etatChoice" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        </GridPane>
+
+        <HBox spacing="10.0">
+            <Button fx:id="btnAjouter" onAction="#onAddTask" prefHeight="36.0" prefWidth="140.0"
+                    text="➕  Ajouter"
+                    style="-fx-background-color: #0694a2; -fx-text-fill: white; -fx-font-weight: bold;
+                           -fx-font-size: 12px; -fx-background-radius: 8; -fx-cursor: hand;" />
+            <Button fx:id="btnModifier" onAction="#onModifierTask" prefHeight="36.0" prefWidth="140.0"
+                    text="✏️  Modifier"
+                    style="-fx-background-color: #d97706; -fx-text-fill: white; -fx-font-weight: bold;
+                           -fx-font-size: 12px; -fx-background-radius: 8; -fx-cursor: hand;" />
+            <Button fx:id="btnSupprimer" onAction="#onSupprimerTask" prefHeight="36.0" prefWidth="140.0"
+                    text="🗑️  Supprimer"
+                    style="-fx-background-color: #dc2626; -fx-text-fill: white; -fx-font-weight: bold;
+                           -fx-font-size: 12px; -fx-background-radius: 8; -fx-cursor: hand;" />
+        </HBox>
+    </VBox>
+
+    <Label text="📁  Liste des tâches"
+           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1a202c; -fx-padding: 18 0 8 0;" />
+
+    <TableView fx:id="taskTable" prefHeight="240.0"
+               style="-fx-background-color: #ffffff; -fx-background-radius: 10;
+                      -fx-border-color: #e2e8f0; -fx-border-radius: 10;">
+        <columns>
+            <TableColumn fx:id="colTitre" prefWidth="175.0" text="Titre" />
+            <TableColumn fx:id="colPriorite" prefWidth="100.0" text="Priorité" />
+            <TableColumn fx:id="colEcheance" prefWidth="120.0" text="Échéance" />
+            <TableColumn fx:id="colEtat" prefWidth="100.0" text="État" />
+            <TableColumn fx:id="colCategorie" prefWidth="130.0" text="Catégorie" />
+            <TableColumn fx:id="colTimer" prefWidth="130.0" text="Suivi Temps" />
+        </columns>
+    </TableView>
+
+</VBox>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="0.0"
+      style="-fx-background-color: #f0f4f8; -fx-padding: 30 30 30 30;"
+      xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.productivitycoach.StatisticsController">
+
+    <Label text="📊  Statistiques de Productivité"
+           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1a202c; -fx-padding: 0 0 6 0;" />
+    <HBox prefHeight="2.0"
+          style="-fx-background-color: linear-gradient(to right, #d97706, #f0f4f8); -fx-padding: 0 0 18 0;" />
+
+    <!-- Stat cards row -->
+    <HBox spacing="14.0" style="-fx-padding: 0 0 16 0;">
+        <VBox prefWidth="155.0" spacing="6.0"
+              style="-fx-background-color: #ffffff; -fx-background-radius: 12;
+                     -fx-padding: 16 16 16 16;
+                     -fx-border-color: #0694a2; -fx-border-width: 0 0 0 4; -fx-border-radius: 12;
+                     -fx-effect: dropshadow(gaussian, #1a202c15, 6, 0, 0, 2);">
+            <Label text="⏱  Focus Total" style="-fx-font-size: 11px; -fx-text-fill: #64748b; -fx-font-weight: bold;" />
+            <Label fx:id="labelTotalFocus" text="—"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #0694a2;" />
+        </VBox>
+        <VBox prefWidth="155.0" spacing="6.0"
+              style="-fx-background-color: #ffffff; -fx-background-radius: 12;
+                     -fx-padding: 16 16 16 16;
+                     -fx-border-color: #059669; -fx-border-width: 0 0 0 4; -fx-border-radius: 12;
+                     -fx-effect: dropshadow(gaussian, #1a202c15, 6, 0, 0, 2);">
+            <Label text="✅  Tâches Complétées" style="-fx-font-size: 11px; -fx-text-fill: #64748b; -fx-font-weight: bold;" />
+            <Label fx:id="labelCompleted" text="—"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #059669;" />
+        </VBox>
+        <VBox prefWidth="155.0" spacing="6.0"
+              style="-fx-background-color: #ffffff; -fx-background-radius: 12;
+                     -fx-padding: 16 16 16 16;
+                     -fx-border-color: #d97706; -fx-border-width: 0 0 0 4; -fx-border-radius: 12;
+                     -fx-effect: dropshadow(gaussian, #1a202c15, 6, 0, 0, 2);">
+            <Label text="🎯  Taux de Succès" style="-fx-font-size: 11px; -fx-text-fill: #64748b; -fx-font-weight: bold;" />
+            <Label fx:id="labelSuccess" text="—"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #d97706;" />
+        </VBox>
+        <VBox prefWidth="155.0" spacing="6.0"
+              style="-fx-background-color: #ffffff; -fx-background-radius: 12;
+                     -fx-padding: 16 16 16 16;
+                     -fx-border-color: #6d28d9; -fx-border-width: 0 0 0 4; -fx-border-radius: 12;
+                     -fx-effect: dropshadow(gaussian, #1a202c15, 6, 0, 0, 2);">
+            <Label text="📁  Catégorie Dominante" style="-fx-font-size: 11px; -fx-text-fill: #64748b; -fx-font-weight: bold;" />
+            <Label fx:id="labelCategory" text="—"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #6d28d9;" />
+        </VBox>
+    </HBox>
+
+    <!-- Charts row -->
+    <HBox spacing="16.0">
+        <PieChart fx:id="pieChartTime" prefHeight="300.0" prefWidth="340.0"
+                  title="Répartition du Temps"
+                  style="-fx-background-color: #ffffff; -fx-background-radius: 12;" />
+
+        <BarChart fx:id="barChartProductivity" prefHeight="300.0" prefWidth="340.0"
+                  title="Productivité Hebdomadaire"
+                  style="-fx-background-color: #ffffff; -fx-background-radius: 12;">
+            <xAxis><CategoryAxis label="Jours" fx:id="xAxis" /></xAxis>
+            <yAxis><NumberAxis fx:id="yAxis" label="Tâches" tickUnit="1.0" upperBound="30.0" /></yAxis>
+        </BarChart>
+    </HBox>
+
+</VBox>

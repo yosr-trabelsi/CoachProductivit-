@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="16.0"
+      style="-fx-background-color: #f0f4f8; -fx-padding: 30 30 30 30;"
+      xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.productivitycoach.IAController">
+
+    <VBox spacing="4.0">
+        <Label text="✨  Planora — Votre Assistante IA"
+               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1a202c;" />
+        <Label text="Décrivez un objectif, Planora génère un plan de sous-tâches actionnable."
+               style="-fx-font-size: 12px; -fx-text-fill: #64748b;" />
+    </VBox>
+
+    <HBox prefHeight="2.0"
+          style="-fx-background-color: linear-gradient(to right, #6d28d9, #0694a2, #f0f4f8);" />
+
+    <!-- Objectif input card -->
+    <VBox spacing="10.0"
+          style="-fx-background-color: #ffffff; -fx-background-radius: 14;
+                 -fx-padding: 20 22 20 22; -fx-border-color: #e2e8f0;
+                 -fx-border-width: 1; -fx-border-radius: 14;
+                 -fx-effect: dropshadow(gaussian, #1a202c15, 8, 0, 0, 3);">
+        <Label text="🎯  Décrivez votre objectif :"
+               style="-fx-font-weight: bold; -fx-text-fill: #6d28d9; -fx-font-size: 13px;" />
+        <TextField fx:id="inputObjectif"
+                   promptText="Ex: Préparer examen Java en 7 jours..."
+                   style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0;
+                          -fx-border-radius: 8; -fx-background-radius: 8;
+                          -fx-font-size: 13px; -fx-padding: 8 12 8 12;" />
+        <Button fx:id="btnGenerer" text="⚡  Générer un plan d'action"
+                onAction="#handleGenererPlan"
+                prefHeight="40.0" prefWidth="230.0"
+                style="-fx-background-color: #6d28d9; -fx-text-fill: white;
+                       -fx-font-weight: bold; -fx-font-size: 13px;
+                       -fx-background-radius: 10; -fx-cursor: hand;" />
+    </VBox>
+
+    <!-- Result -->
+    <VBox spacing="8.0"
+          style="-fx-background-color: #ffffff; -fx-background-radius: 14;
+                 -fx-padding: 20 22 20 22; -fx-border-color: #e2e8f0;
+                 -fx-border-width: 1; -fx-border-radius: 14;
+                 -fx-effect: dropshadow(gaussian, #1a202c15, 8, 0, 0, 3);">
+        <Label text="📋  Résultat de l'analyse Planora :"
+               style="-fx-font-weight: bold; -fx-text-fill: #64748b; -fx-font-size: 13px;" />
+        <TextArea fx:id="resultatIA" editable="false" wrapText="true" prefHeight="160.0"
+                  style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0;
+                         -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-size: 12px;" />
+    </VBox>
+
+    <!-- Tache parente selector -->
+    <VBox spacing="8.0"
+          style="-fx-background-color: #ffffff; -fx-background-radius: 14;
+                 -fx-padding: 20 22 20 22;
+                 -fx-border-color: #0694a2; -fx-border-width: 0 0 0 4;
+                 -fx-border-radius: 14;
+                 -fx-effect: dropshadow(gaussian, #0694a220, 8, 0, 0, 3);">
+        <Label text="🔗  Rattacher les sous-tâches à une tâche :"
+               style="-fx-font-weight: bold; -fx-text-fill: #0694a2; -fx-font-size: 13px;" />
+        <Label text="Les sous-tâches générées seront liées à la tâche sélectionnée ci-dessous."
+               style="-fx-font-size: 11px; -fx-text-fill: #64748b;" />
+        <ChoiceBox fx:id="tacheParenteChoice" prefWidth="400.0"
+                   style="-fx-background-color: #f8fafc; -fx-background-radius: 8;" />
+        <Label fx:id="lblTacheInfo" wrapText="true"
+               style="-fx-font-size: 11px; -fx-text-fill: #d97706;" />
+        <Button fx:id="btnAjouter" text="💾  Ajouter ces sous-tâches à la tâche"
+                onAction="#handleAjouterTaches"
+                prefHeight="40.0" prefWidth="280.0" disable="true"
+                style="-fx-background-color: #0694a2; -fx-text-fill: white;
+                       -fx-font-weight: bold; -fx-font-size: 13px;
+                       -fx-background-radius: 10; -fx-cursor: hand;" />
+    </VBox>
+
+</VBox>
